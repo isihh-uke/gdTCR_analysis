@@ -159,8 +159,7 @@ def cdr3_tcrdist_clustering(df, v_gene=None, j_gene=None, length=None, donor_cat
     tr.clone_df['ci'] = tr.clone_df['ci'].astype('category')
     tr.clone_df[reduction+'1'], tr.clone_df[reduction+'2']=reduction_df.umap1, reduction_df.umap2
 
-    # save the output dataframe with the clustering information
-    # df_final.to_csv('/home/lihua/Rcode/sequence_pattern/m4dTCRdist_df_final.csv')
+
     if title:
         if v_gene:
             title = title + v_gene + str(n_clusters) + criterion + str(n_neighbors) + reduction + str(min_dist) + metric
@@ -169,7 +168,8 @@ def cdr3_tcrdist_clustering(df, v_gene=None, j_gene=None, length=None, donor_cat
     else:
         title=v_gene + str(n_clusters) + criterion + str(n_neighbors) + reduction + str(min_dist) + metric
     fig_name=str(n_clusters) + criterion + str(n_neighbors) + reduction + str(min_dist) + metric + '.pdf'
-    # tr.clone_df.to_csv(f'../data/output_data/TCRdist{title}_df_final.csv')
+    # save the output dataframe with the clustering information
+    tr.clone_df.to_csv(f'../data/output_data/TCRdist{title}_df_final.csv')
 
     # plot colored by cluster index
     fig = plt.figure(figsize=(8, 6))
